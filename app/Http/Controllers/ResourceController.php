@@ -65,14 +65,22 @@ class ResourceController extends Controller
             'product_image' => 'nullable|image|max:2048',
         ]);
 
-        if($request->hasFile('product_image')){
-            Storage::delete($product->product_image);
+        // Jika ada file gambar yang di-upload
+        if($request->hasFile('product_image')) {
+            // Cek apakah gambar lama ada dan hapus
+            if ($product->product_image && Storage::exists($product->product_image)) {
+                Storage::delete($product->product_image);
+            }
+
+            // Simpan gambar baru
             $imagePath = $request->file('product_image')->store('public/images');
             $validated['product_image'] = $imagePath;
         }
 
+        // Update produk dengan data yang telah divalidasi
         $product->update($validated);
 
+        // Redirect ke halaman daftar produk dengan pesan sukses
         return redirect()->route('products.index')->with('success', 'Product updated successfully');
     }
 
@@ -85,4 +93,5 @@ class ResourceController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
+
 }

@@ -1,16 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Product;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
     public function index()
-    {
-        $name = "Eileen";
-        return view('home' , compact('name'));
-    }
+{
+    $products = Product::all();
+    $mostExpensiveProduct = Product::orderBy('retail_price', 'desc')->first();
+    $highestQuantityProduct = Product::orderBy('quantity', 'desc')->first();
+    return view('home', compact('products', 'mostExpensiveProduct', 'highestQuantityProduct'));
+}
 
     public function getProduct($id, $serial_number =-1)
     {
