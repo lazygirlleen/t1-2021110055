@@ -16,50 +16,37 @@
     </div>
 </section>
 
+
 <section class="container mt-5">
     <div class="row">
-        <!-- Total Quantity Products -->
         <div class="col-md-4">
-            <div class="card text-white bg-primary mb-3">
+            <div class="card text-black bg-outline-secondary mb-3">
                 <div class="card-header">Total Quantity of Products</div>
-                <div class="card-body "></div>
-        @foreach ($products as $product)
-            <p>{{ $product->product_name }}: {{ $product->quantity }}</p>
-        @endforeach
+                <div class="card-body">
+                    @foreach ($products as $product)
+                        <p>{{ $product->product_name }}: {{ $product->quantity }}</p>
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
-</section>
 
-<section class="container mt-5">
-    <div class="row">
-        <!-- Total Quantity Products -->
         <div class="col-md-4">
-            <div class="card text-white bg-primary mb-3">
+            <div class="card text-black bg-outline-secondary mb-3">
                 <div class="card-header">Most Expensive Product</div>
-                <div class="card-body "></div>
-        @foreach ($products as $product)
-            <p>{{ $mostExpensiveProduct->product_name }}: {{ $mostExpensiveProduct->retail_price }}</p>
-        @endforeach
+                <div class="card-body">
+                    <p>{{ $mostExpensiveProduct->product_name }}: {{ $mostExpensiveProduct->retail_price }}</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
 
-<section class="container mt-5">
-    <div class="row">
-        <!-- Total Quantity Products -->
         <div class="col-md-4">
-            <div class="card text-white bg-primary mb-3">
-                <div class="card-header">Highest Quaantity Product</div>
-                <div class="card-body "></div>
-        @foreach ($products as $product)
-            <p>{{ $highestQuantityProduct->product_name }}: {{ $highestQuantityProduct->quantity }}</p>
-        @endforeach
+            <div class="card text-black bg-outline-secondary mb-3">
+                <div class="card-header">Highest Quantity Product</div>
+                <div class="card-body">
+                    <p>{{ $highestQuantityProduct->product_name }}: {{ $highestQuantityProduct->quantity }}</p>
+                </div>
             </div>
         </div>
     </div>
-</section>
-
 </section>
 @endsection
